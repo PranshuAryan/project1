@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArogyaSetu — Bridging Healthcare for Bharat</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Tiro+Devanagari+Hindi&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #1565C0;
+    --deep-saffron: #0D47A1;
+    --gold: #42A5F5;
+    --light-gold: #BBDEFB;
+    --cream: #F0F7FF;
+    --white: #FFFFFF;
+    --forest: #0D47A1;
+    --forest-light: #1565C0;
+    --dark: #0A1929;
+    --text-muted: #546E7A;
+    --border: rgba(66,165,245,0.25);
+    --orange: #FF6B00;
+    --orange-light: rgba(255,107,0,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO HEADER ── */
+  .site-header {
+    background: linear-gradient(135deg, #0D47A1 0%, #0A1929 60%, #01227A 100%);
+    padding: 32px 0 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2342A5F5' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  .mandala-left, .mandala-right {
+    position: absolute;
+    top: -20px;
+    width: 180px;
+    height: 180px;
+    opacity: 0.08;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    animation: spin 30s linear infinite;
+  }
+  .mandala-left { left: -40px; }
+  .mandala-right { right: -40px; animation-direction: reverse; }
+  .mandala-left::before, .mandala-left::after,
+  .mandala-right::before, .mandala-right::after {
+    content: '';
+    position: absolute;
+    inset: 15px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+  }
+  .mandala-left::after { inset: 30px; }
+  .mandala-right::after { inset: 30px; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .company-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    font-weight: 900;
+    color: var(--white);
+    letter-spacing: -1px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .company-name span {
+    color: var(--gold);
+    display: inline-block;
+    animation: goldPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes goldPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(66,165,245,0.4); }
+    50% { text-shadow: 0 0 40px rgba(66,165,245,0.8), 0 0 60px rgba(66,165,245,0.3); }
+  }
+
+  .company-tagline {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .om-symbol {
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin: 0 8px;
+    opacity: 0.8;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    background: var(--dark);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--orange);
+    box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: 0 20px;
+    position: relative;
+  }
+
+  .nav-logo {
+    position: absolute;
+    left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--gold);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .nav-logo::before {
+    content: '⚕';
+    font-size: 1.3rem;
+    color: var(--orange);
+  }
+
+  .nav-tabs {
+    display: flex;
+    list-style: none;
+    gap: 0;
+  }
+
+  .nav-tabs li a {
+    display: block;
+    padding: 16px 20px;
+    color: rgba(255,255,255,0.90);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .nav-tabs li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: var(--orange);
+    transition: width 0.3s;
+  }
+
+  /* Click ripple in orange */
+  .nav-tabs li a::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 107, 0, 0.25);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease;
+    opacity: 0;
+  }
+
+  .nav-tabs li a:active::before {
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+    transition: 0s;
+  }
+
+  @keyframes navRipple {
+    0%   { width: 0; height: 0; opacity: 0.5; }
+    100% { width: 200px; height: 200px; opacity: 0; }
+  }
+
+  .nav-tabs li a.nav-clicked::before {
+    animation: navRipple 0.5s ease-out forwards;
+  }
+
+  .nav-tabs li a:hover {
+    color: var(--orange);
+  }
+
+  .nav-tabs li a:hover::after { width: 100%; }
+  .nav-tabs li.active a { color: var(--orange); }
+  .nav-tabs li.active a::after { width: 100%; background: var(--orange); }
+
+  .nav-tabs li a.highlight {
+    background: var(--orange);
+    color: white;
+    border-radius: 4px;
+    margin: 8px 8px;
+    padding: 8px 16px;
+  }
+  .nav-tabs li a.highlight:hover { background: #E55100; }
+  .nav-tabs li a.highlight::after { display: none; }
+
+  /* ── HERO SECTION ── */
+  .hero {
+    background: linear-gradient(160deg, #0A1929 0%, #0D47A1 40%, #01227A 100%);
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(66,165,245,0.15) 0%, transparent 60%);
+  }
+
+  .hero-lotusL, .hero-lotusR {
+    position: absolute;
+    bottom: -30px;
+    font-size: 200px;
+    opacity: 0.04;
+    line-height: 1;
+    animation: floatUp 8s ease-in-out infinite;
+  }
+  .hero-lotusL { left: -20px; animation-delay: -4s; }
+  .hero-lotusR { right: -20px; }
+
+  @keyframes floatUp {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 860px; }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(245,166,35,0.15);
+    border: 1px solid rgba(245,166,35,0.4);
+    color: var(--gold);
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    animation: fadeInDown 0.8s ease both;
+  }
+
+  .hero-hindi {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: clamp(1rem, 2.2vw, 1.6rem);
+    color: var(--gold);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    animation: fadeInDown 1s ease 0.2s both;
+    text-shadow: 0 2px 20px rgba(66,165,245,0.3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease 0.3s both;
+  }
+
+    color: var(--orange);
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.8;
+    max-width: 640px;
+    margin: 0 auto 40px;
+    animation: fadeInDown 1s ease 0.5s both;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    animation: fadeInDown 1s ease 0.7s both;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: inline;
+    line-height: 1;
+  }
+
+  .stat-suffix {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gold);
+    display: inline;
+    vertical-align: super;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(255,255,255,0.15);
+    align-self: center;
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll indicator */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    animation: fadeInDown 1s ease 1.5s both;
+  }
+
+  .scroll-arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid var(--orange);
+    border-bottom: 2px solid var(--orange);
+    transform: rotate(45deg);
+    animation: bounce 1.5s ease infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translateY(0); }
+    50% { transform: rotate(45deg) translateY(6px); }
+  }
+
+  /* ── PORTAL CARDS ── */
+  .portal-section {
+    background: var(--white);
+    padding: 80px 20px;
+    position: relative;
+  }
+
+  .portal-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--forest), var(--gold), #90CAF9, var(--gold), var(--forest));
+  }
+
+  .section-label {
+    text-align: center;
+    font-size: 0.75rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 50px;
+  }
+
+  .portal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    max-width: 920px;
+    margin: 0 auto;
+  }
+
+  .portal-card {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+
+  .portal-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+  }
+
+  .portal-card-login {
+    background: linear-gradient(145deg, var(--forest) 0%, #0D2B1D 100%);
+  }
+
+  .portal-card-register {
+    background: linear-gradient(145deg, #1565C0 0%, #0288D1 100%);
+  }
+
+  .portal-card-inner {
+    padding: 50px 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .portal-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    transition: transform 0.5s;
+  }
+
+  .portal-card:hover::after {
+    transform: scale(2);
+  }
+
+  .portal-icon {
+    font-size: 3rem;
+    margin-bottom: 18px;
+    display: block;
+  }
+
+  .portal-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .portal-card p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .portal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+  }
+
+  .portal-card:hover .portal-btn {
+    background: rgba(255,255,255,0.25);
+    gap: 16px;
+  }
+
+  .portal-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+
+  /* ── DEVELOPER'S THOUGHT ── */
+  .thought-section {
+    background: linear-gradient(160deg, #0A1929, #0D47A1);
+    padding: 100px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .thought-section::before {
+    content: '🇮🇳';
+    position: absolute;
+    font-size: 400px;
+    opacity: 0.03;
+    right: -80px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+  }
+
+  .thought-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .thought-quote-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: var(--gold);
+    opacity: 0.2;
+    line-height: 0.5;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+    color: var(--orange);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+    background: var(--orange);
+    opacity: 0.5;
+  }
+
+  .thought-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    color: var(--white);
+    line-height: 1.75;
+    margin-bottom: 30px;
+    font-style: italic;
+  }
+
+  .thought-hindi-quote {
+    font-family: 'Tiro Devanagari Hindi', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    line-height: 1.8;
+    margin-top: 1.5rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+  }
+
+  .thought-author {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .thought-author span {
+    color: var(--gold);
+  }
+
+  .thought-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 60px;
+  }
+
+  .thought-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(66,165,245,0.15);
+    border-radius: 12px;
+    padding: 28px 20px;
+    text-align: center;
+    transition: all 0.3s;
+  }
+
+  .thought-card:hover {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(66,165,245,0.4);
+    transform: translateY(-4px);
+  }
+
+  .thought-card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .thought-card h4 {
+    color: var(--gold);
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .thought-card p {
+    color: rgba(255,255,255,0.5);
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  /* ── PARTNERS / HOSPITALS ── */
+  .partners-section {
+    background: var(--cream);
+    padding: 80px 0;
+    overflow: hidden;
+  }
+
+  .partners-header {
+    padding: 0 20px;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+
+  .partners-track-wrap {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .partners-track-wrap::before,
+  .partners-track-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+  }
+
+  .partners-track-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--cream), transparent);
+  }
+
+  .partners-track-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--cream), transparent);
+  }
+
+  .partners-track {
+    display: flex;
+    gap: 20px;
+    animation: slideLeft 25s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes slideLeft {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .partners-track:hover { animation-play-state: paused; }
+
+  .partner-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 36px;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    cursor: default;
+  }
+
+  .partner-card:hover {
+    box-shadow: 0 8px 30px rgba(66,165,245,0.15);
+    border-color: rgba(66,165,245,0.3);
+    transform: translateY(-4px);
+  }
+
+  .partner-logo {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .partner-name {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--dark);
+    text-align: center;
+  }
+
+  .partner-city {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .partner-type {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 10px;
+    background: rgba(255,107,0,0.1);
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how-section {
+    background: var(--white);
+    padding: 90px 20px;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 12%;
+    right: 12%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--saffron), var(--gold));
+    z-index: 0;
+  }
+
+  .step-item {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .step-item:nth-child(2) { animation-delay: 0.15s; }
+  .step-item:nth-child(3) { animation-delay: 0.3s; }
+  .step-item:nth-child(4) { animation-delay: 0.45s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .step-num {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 auto 20px;
+    border: 3px solid transparent;
+    background: linear-gradient(white, white) padding-box,
+                linear-gradient(135deg, var(--orange), var(--gold)) border-box;
+    color: var(--orange);
+  }
+
+  .step-item h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .step-item p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: var(--white);
+    padding-top: 70px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 50px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 50px;
+  }
+
+  .footer-brand h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .footer-brand p {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.85rem;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.04);
+  }
+
+  .social-link:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(245,166,35,0.1);
+    transform: translateY(-3px);
+  }
+
+    color: var(--orange);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-col ul a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .footer-col ul a::before {
+    content: '›';
+    color: var(--orange);
+    font-size: 1rem;
+  }
+
+  .footer-col ul a:hover { color: var(--gold); }
+
+  .footer-contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .footer-contact-item .icon {
+    font-size: 1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .footer-contact-item p {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .footer-contact-item a {
+    color: rgba(255,255,255,0.45);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .footer-contact-item a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-bottom p {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.78rem;
+  }
+
+  .footer-bottom p span {
+    color: var(--gold);
+  }
+
+  .footer-tricolor {
+    height: 3px;
+    background: linear-gradient(90deg, #1565C0 33%, #FFFFFF 33% 66%, #138808 66%);
+    margin-top: 6px;
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  /* ── MISC UTILS ── */
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  @media (max-width: 768px) {
+    .portal-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr 1fr; }
+    .steps-grid::before { display: none; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+    .thought-cards { grid-template-columns: 1fr; }
+    .nav-inner { justify-content: flex-start; overflow-x: auto; }
+    .nav-logo { display: none; }
+  }
+
+  /* Animated counter */
+  .counter { display: inline-block; }
+
+  /* Ripple button effect */
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: rgba(255,255,255,0.15);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .ripple:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Pulse ring */
+  @keyframes pulseRing {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.5); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ SITE HEADER ══ -->
+<header class="site-header">
+  <div class="mandala-left"></div>
+  <div class="mandala-right"></div>
+  <h1 class="company-name">
+    <span>Arogya</span>Setu
+  </h1>
+  <p class="company-tagline">
+    <span class="om-symbol">🪷</span>
+    Bridging Healthcare for Every Indian
+    <span class="om-symbol">🪷</span>
+  </p>
+</header>
+
+<!-- ══ NAVBAR ══ -->
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-tabs">
+      <li class="active"><a href="#home">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#portal">Hospital Registration</a></li>
+      <li><a href="#portal">Hospital Login</a></li>
+      <li><a href="#partners">Our Partners</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+      <li><a href="#portal" class="highlight">Get Started →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="home">
+  <span class="hero-lotusL">🪷</span>
+  <span class="hero-lotusR">🪷</span>
+
+  <div class="hero-content">
+    <span class="hero-badge">🏥 B2B Hospital Management Platform</span>
+
+    <div class="hero-hindi" style="color: var(--orange);">
+      स्वस्थ भारत, सशक्त भारत — एक कदम डिजिटल स्वास्थ्य की ओर
+    </div>
+
+    <h2 class="hero-title">
+      End the Queue.<br>
+      <em>Begin the Care.</em>
+    </h2>
+
+    <p class="hero-desc" style="color:#ffffff;">
+      RogyaSetu provides <strong style="color:var(--gold)">smart booking screens</strong> that let patients book appointments and pay in minutes — reducing queues, easing staff workload, and improving hospital efficiency.
+    </p>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div style="display:flex;align-items:baseline;justify-content:center;">
+          <span class="stat-num counter" data-target="500">0</span><span class="stat-suffix">+</span>
+        </div>
+        <span class="stat-label">Hospitals</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div style="display:flex;align-items:baseline;justify-content:center;">
+          <span class="stat-num counter" data-target="12000">0</span><span class="stat-suffix">+</span>
+        </div>
+        <span class="stat-label">Doctors</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div style="display:flex;align-items:baseline;justify-content:center;">
+          <span class="stat-num counter" data-target="1">0</span><span class="stat-suffix">M+</span>
+        </div>
+        <span class="stat-label">Appointments</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <div style="display:flex;align-items:baseline;justify-content:center;">
+          <span class="stat-num counter" data-target="28">0</span><span class="stat-suffix">+</span>
+        </div>
+        <span class="stat-label">States</span>
+      </div>
+    </div>
+  </div>
+
+  <a href="#portal" class="scroll-indicator" style="text-decoration:none;cursor:pointer;">
+    <span>Scroll</span>
+    <div class="scroll-arrow"></div>
+  </a>
+</section>
+
+<!-- ══ PORTAL CARDS ══ -->
+<section class="portal-section" id="portal">
+  <p class="section-label">Hospital Access Portal</p>
+  <h2 class="section-title">Your Hospital's Digital Gateway</h2>
+
+  <div class="portal-grid">
+    <!-- Login -->
+    <a href="hospital-login.html" class="portal-card portal-card-login ripple">
+      <span class="portal-badge">Existing Hospital</span>
+      <div class="portal-card-inner">
+        <span class="portal-icon">🔐</span>
+        <h3>Hospital Login</h3>
+        <p>Already registered with ArogyaSetu? Sign in to your dedicated hospital dashboard to manage appointments, doctors, patients and analytics in real time.</p>
+        <span class="portal-btn">Enter Dashboard →</span>
+      </div>
+    </a>
+
+    <!-- Register -->
+    <a href="hospital-register.html" class="portal-card portal-card-register ripple">
+      <span class="portal-badge">New Hospital</span>
+      <div class="portal-card-inner">
+        <span class="portal-icon">🏥</span>
+        <h3>Hospital Registration</h3>
+        <p>Join India's fastest growing healthcare network. Register your hospital, onboard your doctors and start receiving digital appointments within 24 hours.</p>
+        <span class="portal-btn">Register Now →</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ══ HOW IT WORKS ══ -->
+<section class="how-section" id="how">
+  <div class="container">
+    <p class="section-label">The ArogyaSetu Idea</p>
+    <h2 class="section-title" style="margin-bottom:16px">Self-Service Booking Screens Inside the Hospital Campus</h2>
+    <p style="text-align:center;color:var(--text-muted);font-size:0.92rem;max-width:680px;margin:0 auto 20px;line-height:1.8;">
+      Think of it like an <strong style="color:var(--dark)">ATM — but for doctor appointments.</strong> ArogyaSetu touchscreen booking screens are installed
+      at multiple points inside the hospital campus. Patients walk in, find the nearest booking screen,
+      and book their own appointment themselves — <em>no queue, no counter, no waiting.</em>
+    </p>
+
+    <!-- Kiosk visual callout -->
+    <div style="max-width:820px;margin:0 auto 60px;background:linear-gradient(135deg,var(--forest),#0D2B1D);border-radius:20px;padding:32px 40px;display:flex;align-items:center;gap:32px;flex-wrap:wrap;position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-30px;top:-30px;font-size:160px;opacity:0.06;line-height:1;">🖥️</div>
+      <div style="flex:1;min-width:220px;">
+        <div style="font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:600;">Where are booking screens placed?</div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:white;margin-bottom:12px;line-height:1.4;">Multiple touchpoints across the hospital — so no single crowd forms</h3>
+        <p style="color:rgba(255,255,255,0.55);font-size:0.85rem;line-height:1.7;">Hospital entrance lobby · OPD waiting area · Each department corridor · Emergency wing · Pharmacy area</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;min-width:180px;">
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(245,166,35,0.2);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:1.5rem;">🖥️</span>
+          <div>
+            <div style="color:var(--gold);font-weight:600;font-size:0.88rem;">Touchscreen Booking Screen</div>
+            <div style="color:rgba(255,255,255,0.65);font-size:0.75rem;">Patient self-operated<br>Offline assistance available</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(245,166,35,0.2);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:1.5rem;">🖨️</span>
+          <div>
+            <div style="color:var(--gold);font-weight:600;font-size:0.88rem;">Appointment Receipt Printer</div>
+            <div style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Instant printed slip</div>
+          </div>
+        </div>
+        <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(245,166,35,0.2);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:1.5rem;">💳</span>
+          <div>
+            <div style="color:var(--gold);font-weight:600;font-size:0.88rem;">Payment Terminal</div>
+            <div style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Cash · UPI · Card</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Two flows -->
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+        <span style="background:var(--forest);color:#ffffff;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:20px;font-weight:600;white-space:nowrap;">🏥 Hospital Onboarding — One Time</span>
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+      </div>
+
+      <div class="steps-grid" style="margin-bottom:60px;">
+        <div class="step-item">
+          <div class="step-num" style="background:linear-gradient(white,white) padding-box,linear-gradient(135deg,var(--forest),#2D6A4F) border-box;color:var(--forest);">1</div>
+          <h4>Hospital Registers</h4>
+          <p>Hospital admin signs up on ArogyaSetu, adds departments, timings and hospital layout.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:linear-gradient(white,white) padding-box,linear-gradient(135deg,var(--forest),#2D6A4F) border-box;color:var(--forest);">2</div>
+          <h4>Doctors & Slots Added</h4>
+          <p>All doctors are listed with their specialisation, OPD days, timings and consultation fees.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:linear-gradient(white,white) padding-box,linear-gradient(135deg,var(--forest),#2D6A4F) border-box;color:var(--forest);">3</div>
+          <h4>Booking Screens Installed</h4>
+          <p>ArogyaSetu booking screens (touchscreen + printer + payment) are deployed at key points across the campus.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num" style="background:linear-gradient(white,white) padding-box,linear-gradient(135deg,var(--forest),#2D6A4F) border-box;color:var(--forest);">4</div>
+          <h4>System Goes Live</h4>
+          <p>All booking screens sync in real time — slot availability, doctor schedules and payments are all connected.</p>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:16px;margin-bottom:28px;">
+        <span style="background:var(--saffron);color:white;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border-radius:20px;font-weight:600;white-space:nowrap;">🧑‍🤝‍🧑 Patient Self-Booking at Booking Screen</span>
+        <div style="flex:1;height:1px;background:var(--border);"></div>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <h4>Patient Walks Up</h4>
+          <p>Patient enters the hospital, spots the nearest ArogyaSetu booking screen and taps the screen to begin.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <h4>Enter Details & Cause</h4>
+          <p>Patient fills in their name, age, phone number and selects their health concern or disease category.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <h4>Choose Doctor & Slot</h4>
+          <p>Live doctor slots shown with AI-powered suggestions. Offline assistance available for the right choice.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <h4>Pay & Collect Appointment Receipt</h4>
+          <p>Patient pays via UPI, card or cash. Appointment receipt is printed instantly with token number, doctor name and room.</p>
+        </div>
+      </div>
+
+      <!-- Result callout -->
+      <div style="margin-top:50px;background:linear-gradient(135deg,#FFF8EE,#FFF0D6);border:1px solid rgba(255,107,0,0.15);border-left:4px solid var(--saffron);border-radius:14px;padding:28px 36px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+        <span style="font-size:3rem;">💡</span>
+        <div style="flex:1;min-width:260px;">
+          <h4 style="color:var(--dark);font-size:1.05rem;font-weight:700;margin-bottom:6px;">Why this is different from existing solutions</h4>
+          <p style="color:var(--text-muted);font-size:0.85rem;line-height:1.7;">Online booking apps require internet, smartphones and digital literacy — which millions of Indians lack. ArogyaSetu booking screens are <strong>physically present inside the hospital</strong>, accessible to everyone — elderly, rural, first-time visitors — while still eliminating the queue at the counter.</p>
+        </div>
+        <div style="display:flex;gap:28px;flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--saffron);display:block;line-height:1;">80<span style="font-size:1.1rem;font-weight:600;vertical-align:baseline;">%</span></span>
+            <span style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Queue Reduction</span>
+          </div>
+          <div style="text-align:center;">
+            <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--saffron);display:block;line-height:1;"><span style="font-size:1.1rem;font-weight:600;vertical-align:baseline;">&lt;</span>3 min</span>
+            <span style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Full Booking Time</span>
+          </div>
+          <div style="text-align:center;">
+            <span style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--saffron);display:block;line-height:1;">Min<span style="font-size:1.1rem;font-weight:600;vertical-align:baseline;">.</span></span>
+            <span style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;">Staff Needed</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEVELOPER'S THOUGHT ══ -->
+<section class="thought-section" id="about">
+  <div class="thought-inner">
+    <span class="thought-quote-mark">"</span>
+
+    <div class="thought-heading" style="color:var(--orange);">Developer's Thought</div>
+
+    <div class="thought-hindi-quote">
+      "जब हमने अपने परिवार को घंटों कतार में खड़ा देखा,<br>
+      तब यह विचार आया — क्यों न भारत के हर अस्पताल को डिजिटल करें"
+    </div>
+
+    <p class="thought-text" style="color:#ffffff;">
+      We are a generation that has watched our parents stand in hospital queues for hours,
+      sometimes losing precious time when minutes matter most. We grew up in the same Bharat
+      where a farmer travels 80 km to see a doctor, only to be told — "come tomorrow."
+      ArogyaSetu is not just code. It is our letter to India.
+      A promise that technology will serve the last person in the queue, not just the first.
+    </p>
+
+    <p class="thought-author">— The <span>ArogyaSetu</span> Development Team &nbsp; 🇮🇳</p>
+
+    <div class="thought-cards">
+      <div class="thought-card">
+        <span class="thought-card-icon">💡</span>
+        <h4>Born from Real Pain</h4>
+        <p>Inspired by real hospital experiences of common Indians — long queues, missed consultations, wasted time.</p>
+      </div>
+      <div class="thought-card">
+        <span class="thought-card-icon">🌿</span>
+        <h4>Built for Bharat</h4>
+        <p>Designed for users across urban metros and rural India alike — simple, fast, in local languages.</p>
+      </div>
+      <div class="thought-card">
+        <span class="thought-card-icon">🤝</span>
+        <h4>Seva, Not Business</h4>
+        <p>At its core, ArogyaSetu is a public welfare initiative — healthcare is a right, not a privilege.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARTNERS ══ -->
+<section class="partners-section" id="partners">
+  <div class="partners-header">
+    <p class="section-label">Trusted By</p>
+    <h2 class="section-title">Our Hospital Partners Across India</h2>
+  </div>
+
+  <div class="partners-track-wrap">
+    <div class="partners-track" id="partnersTrack">
+      <!-- Cards duplicated for infinite scroll -->
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#1A1A2E">🏛</div>
+        <span class="partner-name">AIIMS Delhi</span>
+        <span class="partner-city">New Delhi</span>
+        <span class="partner-type">Govt. Premier</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#0D3B66">🏥</div>
+        <span class="partner-name">Fortis Healthcare</span>
+        <span class="partner-city">Pan India</span>
+        <span class="partner-type">Private</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#1A4731">⚕️</div>
+        <span class="partner-name">Apollo Hospitals</span>
+        <span class="partner-city">Chennai</span>
+        <span class="partner-type">Multi-specialty</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#7A1200">🩺</div>
+        <span class="partner-name">Medanta</span>
+        <span class="partner-city">Gurugram</span>
+        <span class="partner-type">Super Specialty</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#2C3E50">🏛</div>
+        <span class="partner-name">PGIMER</span>
+        <span class="partner-city">Chandigarh</span>
+        <span class="partner-type">Govt. Premier</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#4A0E6E">💊</div>
+        <span class="partner-name">Max Hospitals</span>
+        <span class="partner-city">Delhi NCR</span>
+        <span class="partner-type">Private</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#006064">🩻</div>
+        <span class="partner-name">Kokilaben DHI</span>
+        <span class="partner-city">Mumbai</span>
+        <span class="partner-type">Super Specialty</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#1B5E20">🏥</div>
+        <span class="partner-name">Narayana Health</span>
+        <span class="partner-city">Bengaluru</span>
+        <span class="partner-type">Multi-specialty</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#880E4F">❤️</div>
+        <span class="partner-name">Manipal Hospitals</span>
+        <span class="partner-city">Bengaluru</span>
+        <span class="partner-type">Private</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#1A237E">🏛</div>
+        <span class="partner-name">AIIMS Patna</span>
+        <span class="partner-city">Patna, Bihar</span>
+        <span class="partner-type">Govt. Premier</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#3E2723">🔬</div>
+        <span class="partner-name">Tata Medical</span>
+        <span class="partner-city">Kolkata</span>
+        <span class="partner-type">Oncology</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#004D40">⚕️</div>
+        <span class="partner-name">Ruby Hall Clinic</span>
+        <span class="partner-city">Pune</span>
+        <span class="partner-type">Multi-specialty</span>
+      </div>
+
+      <!-- Duplicate for infinite loop -->
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#1A1A2E">🏛</div>
+        <span class="partner-name">AIIMS Delhi</span>
+        <span class="partner-city">New Delhi</span>
+        <span class="partner-type">Govt. Premier</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#0D3B66">🏥</div>
+        <span class="partner-name">Fortis Healthcare</span>
+        <span class="partner-city">Pan India</span>
+        <span class="partner-type">Private</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#1A4731">⚕️</div>
+        <span class="partner-name">Apollo Hospitals</span>
+        <span class="partner-city">Chennai</span>
+        <span class="partner-type">Multi-specialty</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#7A1200">🩺</div>
+        <span class="partner-name">Medanta</span>
+        <span class="partner-city">Gurugram</span>
+        <span class="partner-type">Super Specialty</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#2C3E50">🏛</div>
+        <span class="partner-name">PGIMER</span>
+        <span class="partner-city">Chandigarh</span>
+        <span class="partner-type">Govt. Premier</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#4A0E6E">💊</div>
+        <span class="partner-name">Max Hospitals</span>
+        <span class="partner-city">Delhi NCR</span>
+        <span class="partner-type">Private</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#006064">🩻</div>
+        <span class="partner-name">Kokilaben DHI</span>
+        <span class="partner-city">Mumbai</span>
+        <span class="partner-type">Super Specialty</span>
+      </div>
+      <div class="partner-card">
+        <div class="partner-logo" style="background:#1B5E20">🏥</div>
+        <span class="partner-name">Narayana Health</span>
+        <span class="partner-city">Bengaluru</span>
+        <span class="partner-type">Multi-specialty</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer id="contact">
+  <div class="footer-inner">
+    <!-- Brand -->
+    <div class="footer-brand">
+      <h2>⚕ ArogyaSetu</h2>
+      <p>
+        ArogyaSetu is India's leading B2B digital healthcare appointment platform,
+        empowering hospitals with intelligent patient management tools and bringing
+        accessible healthcare to every corner of Bharat.
+      </p>
+      <div class="social-links">
+        <a href="#" class="social-link" title="Instagram">📸</a>
+        <a href="#" class="social-link" title="LinkedIn">💼</a>
+        <a href="#" class="social-link" title="Twitter/X">🐦</a>
+        <a href="#" class="social-link" title="YouTube">▶️</a>
+      </div>
+      <div class="footer-tricolor"></div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#portal">Hospital Login</a></li>
+        <li><a href="#portal">Register Hospital</a></li>
+        <li><a href="#partners">Our Partners</a></li>
+      </ul>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">OPD Appointments</a></li>
+        <li><a href="#">Emergency Booking</a></li>
+        <li><a href="#">Lab Test Slots</a></li>
+        <li><a href="#">Doctor Profiles</a></li>
+        <li><a href="#">Digital Appointment Receipts</a></li>
+        <li><a href="#">Hospital Analytics</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <div class="footer-contact-item">
+        <span class="icon">📞</span>
+        <p><a href="tel:+911800AROGYA">1800-AROGYA (Toll Free)</a><br>
+        <a href="tel:+919876543210">+91 98765 43210</a></p>
+      </div>
+      <div class="footer-contact-item">
+        <span class="icon">✉️</span>
+        <p><a href="/cdn-cgi/l/email-protection#71020401011e03053110031e160810021405045f181f"><span class="__cf_email__" data-cfemail="b8cbcdc8c8d7caccf8d9cad7dfc1d9cbddcccd96d1d6">[email&#160;protected]</span></a><br>
+        <a href="/cdn-cgi/l/email-protection#b9d1d6cac9d0cdd8d5caf9d8cbd6dec0d8cadccdcc97d0d7"><span class="__cf_email__" data-cfemail="8fe7e0fcffe6fbeee3fccfeefde0e8f6eefceafbfaa1e6e1">[email&#160;protected]</span></a></p>
+      </div>
+      <div class="footer-contact-item">
+        <span class="icon">📍</span>
+        <p>ArogyaSetu HQ, Tech Park,<br>Patna, Bihar — 800001</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 <span>ArogyaSetu</span>. All rights reserved. Made with ❤️ for Bharat.</p>
+    <p>Privacy Policy &nbsp;·&nbsp; Terms of Service &nbsp;·&nbsp; Cookie Policy</p>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // ── Animated Counter ──
+  const counters = document.querySelectorAll('.counter');
+  let counted = false;
+
+  function animateCounters() {
+    if (counted) return;
+    counted = true;
+    counters.forEach(el => {
+      const target = +el.getAttribute('data-target');
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+          el.textContent = target.toLocaleString('en-IN');
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current).toLocaleString('en-IN');
+        }
+      }, 16);
+    });
+  }
+
+  const heroObserver = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) animateCounters();
+  }, { threshold: 0.5 });
+
+  heroObserver.observe(document.querySelector('.hero-stats'));
+
+  // ── Nav click ripple animation ──
+  const sections = document.querySelectorAll('section[id], footer[id]');
+  const navLinks = document.querySelectorAll('.nav-tabs li');
+
+  document.querySelectorAll('.nav-tabs li a:not(.highlight)').forEach(link => {
+    link.addEventListener('click', function () {
+      // Ripple animation
+      this.classList.remove('nav-clicked');
+      void this.offsetWidth; // reflow to restart animation
+      this.classList.add('nav-clicked');
+      setTimeout(() => this.classList.remove('nav-clicked'), 500);
+
+      // Immediately update active tab highlight
+      navLinks.forEach(li => li.classList.remove('active'));
+      this.closest('li').classList.add('active');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 120) current = sec.id;
+    });
+    navLinks.forEach(li => {
+      li.classList.remove('active');
+      const link = li.querySelector('a');
+      if (link && link.getAttribute('href') === '#' + current) {
+        li.classList.add('active');
+      }
+    });
+  });
+
+  // ── Sticky nav shadow ──
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.boxShadow = window.scrollY > 10
+      ? '0 4px 30px rgba(0,0,0,0.5)'
+      : '0 4px 30px rgba(0,0,0,0.4)';
+  });
+
+  // ── Portal card click ripple ──
+  document.querySelectorAll('.portal-card').forEach(card => {
+    card.addEventListener('click', function(e) {
+      // In real use, these would navigate to separate pages
+      const href = this.getAttribute('href');
+      if (href && href !== '#') {
+        // Normally: window.location.href = href;
+        // For demo just show visual feedback:
+      }
+    });
+  });
+
+  // ── Fade-in on scroll for sections ──
+  const fadeEls = document.querySelectorAll('.thought-card, .step-item, .partner-card');
+  const fadeObserver = new IntersectionObserver(entries => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.sty
